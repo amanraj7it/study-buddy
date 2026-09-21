@@ -15,10 +15,22 @@ import {
   GraduationCap,
   Command,
   Plus,
+  HelpCircle,
+  Users,
+  BrainCircuit,
+  HeartHandshake,
+  Trophy,
+  Coins
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 const NAV_ITEMS = [
+  { name: 'Ask a Doubt', path: '/doubts', icon: HelpCircle },
+  { name: 'Study Circles', path: '/circles', icon: Users },
+  { name: 'Smart Planner', path: '/smart-planner', icon: BrainCircuit },
+  { name: 'Parent Report', path: '/parent-report', icon: HeartHandshake },
+  { name: 'Pitch & Impact', path: '/pitch-analytics', icon: Trophy },
+  { name: 'Community Pricing', path: '/pricing', icon: Coins },
   { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
   { name: 'Tasks', path: '/tasks', icon: CheckSquare },
   { name: 'Subjects', path: '/subjects', icon: BookOpen },
@@ -30,10 +42,10 @@ const NAV_ITEMS = [
 
 const BOTTOM_NAV_ITEMS = [
   { name: 'Home', path: '/dashboard', icon: LayoutDashboard },
-  { name: 'Tasks', path: '/tasks', icon: CheckSquare },
-  { name: 'Schedule', path: '/schedule', icon: Calendar },
-  { name: 'Notes', path: '/notes', icon: FileText },
-  { name: 'Goals', path: '/goals', icon: Target },
+  { name: 'Doubts', path: '/doubts', icon: HelpCircle },
+  { name: 'Circles', path: '/circles', icon: Users },
+  { name: 'Planner', path: '/smart-planner', icon: BrainCircuit },
+  { name: 'Parent', path: '/parent-report', icon: HeartHandshake },
 ];
 
 export function MobileNav({ onOpenCommand, onQuickAdd }) {

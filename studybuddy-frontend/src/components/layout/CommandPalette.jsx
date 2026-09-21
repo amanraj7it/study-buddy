@@ -12,6 +12,12 @@ import {
   LayoutDashboard,
   Plus,
   ArrowRight,
+  HelpCircle,
+  Users,
+  BrainCircuit,
+  HeartHandshake,
+  Trophy,
+  Coins,
 } from 'lucide-react';
 import { useKeyboardShortcut } from '../../hooks/useKeyboardShortcut';
 
@@ -31,6 +37,12 @@ export function CommandPalette({ isOpen, onClose, onQuickAction }) {
   }, [isOpen]);
 
   const navItems = [
+    { title: 'Ask a Doubt (AI Tutor & Journal)', path: '/doubts', icon: HelpCircle, section: 'Education Chest' },
+    { title: 'Peer Study Circles & Rooms', path: '/circles', icon: Users, section: 'Education Chest' },
+    { title: 'Smart Study Planner (Adaptive)', path: '/smart-planner', icon: BrainCircuit, section: 'Education Chest' },
+    { title: 'Parent Dashboard (WhatsApp Reports)', path: '/parent-report', icon: HeartHandshake, section: 'Education Chest' },
+    { title: 'Hackathon Pitch & Impact Deck', path: '/pitch-analytics', icon: Trophy, section: 'Education Chest' },
+    { title: 'Pricing & Freemium Community Access', path: '/pricing', icon: Coins, section: 'Education Chest' },
     { title: 'Dashboard', path: '/dashboard', icon: LayoutDashboard, section: 'Navigation' },
     { title: 'Tasks & Assignments', path: '/tasks', icon: CheckSquare, section: 'Navigation' },
     { title: 'Subjects & Courses', path: '/subjects', icon: BookOpen, section: 'Navigation' },
@@ -41,6 +53,9 @@ export function CommandPalette({ isOpen, onClose, onQuickAction }) {
   ];
 
   const actionItems = [
+    { title: 'Ask a Homework Doubt (AI Tutor)', path: '/doubts', icon: HelpCircle, section: 'Education Chest' },
+    { title: 'Join / Browse Study Circles', path: '/circles', icon: Users, section: 'Education Chest' },
+    { title: 'Generate Adaptive Study Plan', path: '/smart-planner', icon: BrainCircuit, section: 'Education Chest' },
     { title: 'Create New Task', action: 'create_task', icon: Plus, section: 'Quick Actions' },
     { title: 'Create New Subject', action: 'create_subject', icon: Plus, section: 'Quick Actions' },
     { title: 'Create New Study Note', action: 'create_note', icon: Plus, section: 'Quick Actions' },

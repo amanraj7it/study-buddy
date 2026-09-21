@@ -16,6 +16,12 @@ import { NoteDetail } from './pages/NoteDetail';
 import { Schedule } from './pages/Schedule';
 import { Goals } from './pages/Goals';
 import { Settings } from './pages/Settings';
+import { DoubtSolver } from './pages/DoubtSolver';
+import { StudyCircles } from './pages/StudyCircles';
+import { SmartPlanner } from './pages/SmartPlanner';
+import { ParentDashboard } from './pages/ParentDashboard';
+import { Subscription } from './pages/Subscription';
+import { PitchAnalytics } from './pages/PitchAnalytics';
 
 // Protected Route Component
 function ProtectedRoute({ children }) {
@@ -87,6 +93,12 @@ export function App() {
               }
             >
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/doubts" element={<DoubtSolver />} />
+              <Route path="/circles" element={<StudyCircles />} />
+              <Route path="/smart-planner" element={<SmartPlanner />} />
+              <Route path="/parent-report" element={<ParentDashboard />} />
+              <Route path="/pitch-analytics" element={<PitchAnalytics />} />
+              <Route path="/pricing" element={<Subscription />} />
               <Route path="/tasks" element={<Tasks />} />
               <Route path="/subjects" element={<Subjects />} />
               <Route path="/subjects/:id" element={<SubjectDetail />} />

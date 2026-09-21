@@ -16,6 +16,9 @@ import {
   Flame,
   CheckCircle2,
   AlertCircle,
+  HelpCircle,
+  Trophy,
+  Users,
 } from 'lucide-react';
 import { api } from '../api/api';
 import { useAuth } from '../context/AuthContext';
@@ -144,18 +147,18 @@ export function Dashboard() {
 
   const kpis = [
     {
-      title: 'Total Subjects',
-      value: stats.total_subjects,
-      icon: BookOpen,
-      color: '#8B5CF6',
-      link: '/subjects',
+      title: 'Doubts Solved',
+      value: stats.total_doubts || 0,
+      icon: HelpCircle,
+      color: '#A78BFA',
+      link: '/doubts',
     },
     {
-      title: 'Total Tasks',
-      value: stats.total_tasks,
-      icon: CheckSquare,
-      color: '#60A5FA',
-      link: '/tasks',
+      title: 'Peer Reputation',
+      value: `${stats.reputation_points || 0} pts`,
+      icon: Trophy,
+      color: '#F59E0B',
+      link: '/circles',
     },
     {
       title: 'Pending Tasks',
@@ -254,6 +257,55 @@ export function Dashboard() {
           >
             New Goal
           </Button>
+        </div>
+      </div>
+
+      {/* Education Chest Hackathon Feature Spotlight Bar */}
+      <div className="p-4 rounded-2xl bg-[#8B5CF6]/10 border border-[#8B5CF6]/30 flex flex-col md:flex-row md:items-center justify-between gap-3 shadow-md">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#10B981] flex items-center justify-center text-white shrink-0 shadow-md">
+            <Sparkles className="w-5 h-5" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-[#F5F3F7]">
+                Education Chest — After-School Support
+              </span>
+              <span className="text-[10px] font-bold px-2 py-0.2 rounded-full bg-[#10B981]/20 text-[#34D399]">
+                100% Free Core
+              </span>
+            </div>
+            <p className="text-[11px] text-[#8F889D]">
+              Overcoming costly tuition with free AI step-by-step doubt resolution, collaborative peer circles, and parent WhatsApp reports.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 flex-wrap">
+          <Link
+            to="/doubts"
+            className="px-3 py-1.5 rounded-xl bg-[#8B5CF6] hover:bg-[#7C3AED] text-white text-xs font-semibold shadow-sm transition-all cursor-pointer"
+          >
+            💡 Ask a Doubt
+          </Link>
+          <Link
+            to="/circles"
+            className="px-3 py-1.5 rounded-xl bg-[#171421] hover:bg-[#8B5CF6]/20 text-[#C4B5FD] border border-[#8B5CF6]/30 text-xs font-semibold transition-all cursor-pointer"
+          >
+            👥 Peer Circles
+          </Link>
+          <Link
+            to="/parent-report"
+            className="px-3 py-1.5 rounded-xl bg-[#171421] hover:bg-[#EC4899]/20 text-[#F472B6] border border-[#EC4899]/30 text-xs font-semibold transition-all cursor-pointer"
+          >
+            👨‍👩‍👧 Parent Report
+          </Link>
+          <Link
+            to="/pitch-analytics"
+            className="px-3 py-1.5 rounded-xl bg-[#F59E0B]/20 hover:bg-[#F59E0B]/30 text-[#FBBF24] border border-[#F59E0B]/40 text-xs font-semibold transition-all cursor-pointer"
+          >
+            🏆 Hackathon Pitch
+          </Link>
         </div>
       </div>
 

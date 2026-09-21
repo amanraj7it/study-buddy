@@ -189,6 +189,61 @@ export const api = {
     get: () => apiFetch("/dashboard"),
   },
 
+  // AI Doubt Solver & Doubt Journal
+  doubts: {
+    solve: (data) => apiFetch("/doubts/solve", { method: "POST", body: data }),
+    getAll: (params = {}) => {
+      const query = new URLSearchParams();
+      if (params.status) query.append("status", params.status);
+      if (params.subject) query.append("subject", params.subject);
+      if (params.search) query.append("search", params.search);
+      const qs = query.toString();
+      return apiFetch(`/doubts${qs ? `?${qs}` : ""}`);
+    },
+    updateStatus: (id, status) => apiFetch(`/doubts/${id}/status`, { method: "PATCH", body: { status } }),
+    delete: (id) => apiFetch(`/doubts/${id}`, { method: "DELETE" }),
+  },
+
+  // Peer Study Circles
+  circles: {
+    getAll: (params = {}) => {
+      const query = new URLSearchParams();
+      if (params.grade) query.append("grade", params.grade);
+      if (params.subject) query.append("subject", params.subject);
+      const qs = query.toString();
+      return apiFetch(`/circles${qs ? `?${qs}` : ""}`);
+    },
+    create: (data) => apiFetch("/circles", { method: "POST", body: data }),
+    getById: (id) => apiFetch(`/circles/${id}`),
+    sendMessage: (id, text) => apiFetch(`/circles/${id}/messages`, { method: "POST", body: { text } }),
+    postDoubt: (id, data) => apiFetch(`/circles/${id}/doubts`, { method: "POST", body: data }),
+    answerDoubt: (doubtId, answerText) => apiFetch(`/circles/doubts/${doubtId}/answers`, { method: "POST", body: { answer_text: answerText } }),
+    upvoteAnswer: (answerId) => apiFetch(`/circles/answers/${answerId}/upvote`, { method: "POST" }),
+    getLeaderboard: () => apiFetch("/circles/leaderboard"),
+  },
+
+  // Smart Adaptive Planner
+  planner: {
+    generate: (data) => apiFetch("/planner/generate", { method: "POST", body: data }),
+    commitToSchedule: (data) => apiFetch("/planner/commit-to-schedule", { method: "POST", body: data }),
+  },
+
+  // Parent Dashboard (Multilingual & WhatsApp)
+  parentReport: {
+    get: (lang = "en") => apiFetch(`/parent-report?lang=${lang}`),
+  },
+
+  // Freemium & Subscription
+  subscription: {
+    getStatus: () => apiFetch("/subscription/status"),
+    upgrade: () => apiFetch("/subscription/upgrade", { method: "POST" }),
+  },
+
+  // Hackathon Pitch Impact Stats
+  impact: {
+    getStats: () => apiFetch("/admin/impact-stats"),
+  },
+
   // Dev Seed
   seed: () => apiFetch("/seed", { method: "POST" }),
 };
