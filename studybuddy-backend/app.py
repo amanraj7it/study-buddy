@@ -1326,7 +1326,7 @@ def create_circle():
 
 @app.get("/api/circles/<int:id>")
 def get_circle(id):
-    circle = StudyCircle.query.get(id)
+    circle = db.session.get(StudyCircle, id)
     if not circle:
         return jsonify({"success": False, "error": "Study circle not found"}), 404
 
@@ -1350,7 +1350,7 @@ def get_circle(id):
 def post_circle_message(id):
     uid = get_current_user_id()
     user = db.session.get(User, uid)
-    circle = StudyCircle.query.get(id)
+    circle = db.session.get(StudyCircle, id)
     if not circle:
         return jsonify({"success": False, "error": "Circle not found"}), 404
 
@@ -1375,7 +1375,7 @@ def post_circle_message(id):
 def post_circle_doubt(id):
     uid = get_current_user_id()
     user = db.session.get(User, uid)
-    circle = StudyCircle.query.get(id)
+    circle = db.session.get(StudyCircle, id)
     if not circle:
         return jsonify({"success": False, "error": "Circle not found"}), 404
 
@@ -1408,7 +1408,7 @@ def answer_circle_doubt(doubt_id):
     """
     uid = get_current_user_id()
     user = db.session.get(User, uid)
-    doubt = CircleDoubt.query.get(doubt_id)
+    doubt = db.session.get(CircleDoubt, doubt_id)
     if not doubt:
         return jsonify({"success": False, "error": "Shared doubt not found"}), 404
 
@@ -1448,7 +1448,7 @@ def upvote_circle_answer(answer_id):
     Upvote an answer as helpful.
     Awards the answer author +15 reputation points!
     """
-    answer = CircleDoubtAnswer.query.get(answer_id)
+    answer = db.session.get(CircleDoubtAnswer, answer_id)
     if not answer:
         return jsonify({"success": False, "error": "Answer not found"}), 404
 
